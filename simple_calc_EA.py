@@ -75,7 +75,7 @@ operators = {
 # Functions
 # ------------------------------------------------------------------------
 def get_user_input():
-    """Get input from the user: two numbers and an operator. """
+    """Get input from the user: two numbers and an operator. """ 
     try:
         number1 = int(raw_input("Enter the first number:"))
         number2 = int(raw_input("Enter the second number:"))
@@ -83,8 +83,13 @@ def get_user_input():
         
         return (number1, number2, operator) 
     except:
-        print ("Invalid Input")
-        return (None, None, None)
+        try:
+            number1 = int(input("Enter the first number:"))
+            number2 = int(input("Enter the second number:"))
+            operator = input("Enter the operator (valid operators are +, -, *,>>,<<,%,^ and /): ")
+        except:
+            print ("Invalid Input")
+            return (None, None, None)  
 # End def
 
 
