@@ -4,7 +4,7 @@
 Simple Calculator
 --------------------------------------------------------------------------
 License:   
-Copyright 2021 <NAME>
+Copyright 2021 Eunice 
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions are met:
@@ -65,8 +65,8 @@ operators = {
     "-" : operator.sub,
     "*" : operator.mul,
     "/" : operator.truediv,
-    ">>": operator.lshift,
-    "<<": operator.rshift,
+    ">>": operator.rshift, 
+    "<<": operator.lshift,
     "%" : operator.mod, 
     "^" : operator.pow 
 }
@@ -77,8 +77,8 @@ operators = {
 def get_user_input():
     """Get input from the user: two numbers and an operator. """
     try:
-        number1 = float(raw_input("Enter the first number:"))
-        number2 = float(raw_input("Enter the second number:"))
+        number1 = int(raw_input("Enter the first number:"))
+        number2 = int(raw_input("Enter the second number:"))
         operator = raw_input("Enter the operator (valid operators are +, -, *,>>,<<,%,^ and /): ")
         
         return (number1, number2, operator) 
@@ -106,3 +106,4 @@ if __name__ == "__main__":
         #Calculate results and print result 
         print(function(number1, number2))
 #End if 
+
