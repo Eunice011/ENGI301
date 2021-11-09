@@ -1,0 +1,107 @@
+
+--------------------------------------------------------------------------
+Cosplay Sword READ ME
+--------------------------------------------------------------------------
+License:   
+Copyright 2021 Eunice Aissi 
+
+Based on library from
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this 
+list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, 
+this list of conditions and the following disclaimer in the documentation 
+and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors 
+may be used to endorse or promote products derived from this software without 
+specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE 
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+--------------------------------------------------------------------------
+More Project DEatils can be found here: https://www.hackster.io/Eunice011/elemental-cosplay-sword-1821f4
+--------------------------------------------------------------------------
+Beagleboard Installation needed:
+Speaker: 
+After setting up USB, plug speaker into USB Host port
+▪ Make sure speaker has enough power; may need externally powered USB Hub
+▪ Prerequisites:
+  ▪ sudo apt-get update
+  ▪ sudo apt-get install alsa-utils libasound2 –y
+▪ Check speaker is available
+  ▪ aplay -l
+▪ Edit sound configuration file
+  ▪ nano ~/.asoundrc
+▪ Add speech:
+  ▪ sudo apt-get install flite -y
+  ▪ flite -t Hello!
+▪ Add MP3 Capabilities:
+  ▪ sudo apt-get install mplayer -y (may take a while)
+  ▪ mplayer file_example_MP3_700KB.mp3
+LED Strips:
+▪ Edit uEnv.txt
+  ▪ sudo nano /boot/uEnv.txt
+  ▪ Comment out RPROC firmware
+  ▪ Uncomment UIO firmware
+▪ Reboot
+  ▪ sudo reboot
+▪ Check that UIO is available
+  ▪ ls /sys/class/uio
+--------------------------------------------------------------------------
+Purpose: The purpose of this project is to create an LED sword that can be used 
+as part of a costplay outfit. The sword has 6 modes, four elemental modes, one 
+neutral mode, and one pink mode. In each sword mode different LED displays and
+sound effects are emitted to match with the mode. For example, water mode will 
+turn the sword blue with water flowing sound effects whenever the sword is moved.
+Lastly the sword has one main modes for how the user interacts with it: 
+Chosen mode - The Effects only appear while the handle is gripped
+
+Sensors: Force Sensor, accelerometer, button
+Actuators: Servo, LED strip lights, speakers, five colored LEDs indicators 
+--------------------------------------------------------------------------
+
+Functions:
+    - On start up the sword is white to indicate neutral mode, the wings/flower is closed
+    - When the force sensor is first touched, a random elemental mode is chosen 
+    - In these modes, swingind the sword will trigger a sound effect to be played 
+    - if the user sishes to change modes they must press the mmode change button
+      - Note: No special task is requored to choose a mode, toggling thorugh modes
+             - by pressing the button takes the user to a new mode automatically 
+    - Note: For future versions, if the force sensor is released at any time the sword will enter 
+            - neutral mode, for this version the force sensor can be released with no consequences
+--------------------------------------------------------------------------
+Sword Functions Details:
+The sword features 4 elemental modes (Earth, Wind, Water, Fire), one neutral mode, and one pink mode. 
+In each mode, the sword lights up in the appropriate colors (ie. blue for water) and when swung outputs elemental sound effects 
+(ie. water splashing for water). The special twist is that the sword is only active when the handle is gripped. 
+This is because anime swords are typically fueled by mana and/or only glow when touched by the right person. 
+To create this "chosen one" illusion I placed a small force sensor somewhere on the grip at a location that only I, or whoever the sword is made for, would know. 
+The sword elemental modes are only active when this force sensor is pressed, therefore unless the owner knows the location of the sensor the sword won't work. Lastly, just for fun,
+I added a set of moving wings at the bottom of the blade that swings open when the force sensor is touched and closes when the force sensor is no longer being touched.
+
+Wiring Details: 
+The sword currently uses the following electrical components: 5 LEDs, a push button, a USB-A breakout board, two 100uF capacitors,
+a level shifter, a black Beagleboard, led strip lights, a 5V USB-A power adapter, a force sensor, 
+an accelerometer, a servo, a USB-A Speaker, one 1kohm resistor, and one 3.3kohm resistor. 
+The final project will also include a 5V battery with two USB-A outputs and a power switch to eliminate 
+the need for a computer to power the beagle board and the led strip lights. The diagram below depicts the system wiring. 
+They are several things worth noting. First, the two capacitors are connected to the USB-A breakout board in order to provide enough initial power to the board.
+Second, the accelerometer is used to detect a swing of the sword, if the sword is swung a sound effect corresponding to the chosen elemental mode is randomly 
+chosen and played. Third, the servo is used to open the wings/flower while the touch sensor is being touched.
+Lastly, the LEDs are used for indicating which elemental mode the sword is currently in
+
+
+
