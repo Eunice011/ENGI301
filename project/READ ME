@@ -97,7 +97,7 @@ The sword currently uses the following electrical components: 5 LEDs, a push but
 a level shifter, a black Beagleboard, led strip lights, a 5V USB-A power adapter, a force sensor, 
 an accelerometer, a servo, a USB-A Speaker, one 1kohm resistor, and one 3.3kohm resistor. 
 The final project will also include a 5V battery with two USB-A outputs and a power switch to eliminate 
-the need for a computer to power the beagle board and the led strip lights. The diagram below depicts the system wiring. 
+the need for a computer to power the beagle board and the led strip lights. Pin layouts are given in the more details link and in the SWord class definition in the Sword code. 
 They are several things worth noting. First, the two capacitors are connected to the USB-A breakout board in order to provide enough initial power to the board.
 Second, the accelerometer is used to detect a swing of the sword, if the sword is swung a sound effect corresponding to the chosen elemental mode is randomly 
 chosen and played. Third, the servo is used to open the wings/flower while the touch sensor is being touched.
